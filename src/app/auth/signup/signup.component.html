@@ -1,9 +1,6 @@
 <h3>Create an Account</h3>
 <form [formGroup]="authForm" class="ui form">
-  <div class="field">
-    <label for="username">Username</label>
-    <input type="text" formControlName="username" id="username" />
-  </div>
+  <app-input label="Username" id="username" [control]="authForm.get('username')"></app-input>
 
   <div class="field">
     <label for="password">Password</label>

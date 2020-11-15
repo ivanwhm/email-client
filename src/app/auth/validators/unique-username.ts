@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AsyncValidator, FormControl, ValidationErrors } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { AsyncValidator, FormControl } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class UniqueUsername implements AsyncValidator {
   constructor(private readonly http: HttpClient) {}
 
-  validate(control: FormControl): Observable<ValidationErrors> {
+  validate = (control: FormControl) => {
     const { value } = control;
 
-    return null;
-  }
+    return this.http.post<any>('https://api.angular-email.com/auth/username', {
+      username: value,
+    });
+  };
 }

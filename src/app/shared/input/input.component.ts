@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -9,14 +9,15 @@ import { FormControl } from '@angular/forms';
 export class InputComponent implements OnInit {
   @Input() id: string;
   @Input() label: string;
+  @Input() inputType: string;
   @Input() control: FormControl;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  showErrors(): boolean {
+  showErrors(): ValidationErrors {
     const { dirty, touched, errors } = this.control;
-    return dirty && touched && errors !== undefined;
+    return dirty && touched && errors;
   }
 }

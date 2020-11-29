@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../auth.service';
-import { SignupResponse } from '../../interfaces/signup-response.interface';
 import { MatchPassword } from '../../validators/match-password';
 import { UniqueUsername } from '../../validators/unique-username';
 
@@ -44,7 +44,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private readonly matchPassword: MatchPassword,
     private readonly uniqueUsername: UniqueUsername,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -55,8 +56,8 @@ export class SignupComponent implements OnInit {
     }
 
     this.authService.signup(this.authForm.value).subscribe({
-      next: (response: SignupResponse) => {
-        // Navigate to some other route
+      next: () => {
+        this.router.navigateByUrl('/inbox');
       },
       error: (error: HttpErrorResponse) => {
         if (!error.status) {

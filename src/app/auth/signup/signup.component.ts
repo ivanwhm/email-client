@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService, SignupResponse } from '../auth.service';
+import { AuthService } from '../auth.service';
+import { SignupResponse } from '../interfaces/signup-response.interface';
 import { MatchPassword } from '../validators/match-password';
 import { UniqueUsername } from '../validators/unique-username';
 
@@ -52,8 +54,15 @@ export class SignupComponent implements OnInit {
       return;
     }
 
-    this.authService.signup(this.authForm.value).subscribe((response: SignupResponse) => {
-      console.log(response);
+    this.authService.signup(this.authForm.value).subscribe({
+      next: (response: SignupResponse) => {
+        // Navigate to some other route
+      },
+      error: (error: HttpErrorResponse) => {
+        if (!error.status) {
+          this.authForm.setErrors({ noConnection: true });
+        }
+      },
     });
   }
 }

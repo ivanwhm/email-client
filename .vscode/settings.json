@@ -4,6 +4,7 @@
         "eofline",
         "nospace",
         "onespace",
-        "paren"
+        "paren",
+        "signup"
     ]
 }

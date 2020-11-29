@@ -1,6 +1,6 @@
 <h3>Sign In</h3>
 
-<form [formGroup]="signinForm" class="ui form">
+<form (ngSubmit)="onSubmit()" [formGroup]="signinForm" class="ui form">
   <app-input
     [control]="signinForm.get('username')"
     label="Username"

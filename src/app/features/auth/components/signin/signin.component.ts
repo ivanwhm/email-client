@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent {
   signinForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -21,7 +23,13 @@ export class SigninComponent implements OnInit {
     ]),
   });
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  onSubmit(): void {
+    if (this.signinForm.invalid) {
+      return;
+    }
+
+    this.authService.signin(this.signinForm.value).subscribe(() => {});
+  }
 }

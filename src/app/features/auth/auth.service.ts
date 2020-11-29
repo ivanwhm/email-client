@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { SignedInResponse } from './interfaces/signed-in-response.interface';
+import { SigninCredentials } from './interfaces/signin-credentials.interface';
 import { SignupCredentials } from './interfaces/signup-credentials.interface';
 import { SignupResponse } from './interfaces/signup-response.interface';
 import { UsernameAvailableResponse } from './interfaces/username-available-response.interface';
@@ -25,6 +26,14 @@ export class AuthService {
 
   signup(credentials: SignupCredentials): Observable<SignupResponse> {
     return this.http.post<SignupResponse>(`${this.rootUrl}/signup`, credentials).pipe(
+      tap(() => {
+        this.signedin$.next(true);
+      })
+    );
+  }
+
+  signin(credentials: SigninCredentials): Observable<SignedInResponse> {
+    return this.http.post<SignedInResponse>(`${this.rootUrl}/signin`, credentials).pipe(
       tap(() => {
         this.signedin$.next(true);
       })

@@ -1,1 +1,27 @@
-<p>signin works!</p>
+<h3>Sign In</h3>
+
+<form [formGroup]="signinForm" class="ui form">
+  <app-input
+    [control]="signinForm.get('username')"
+    label="Username"
+    id="username"
+    inputType="text"
+  ></app-input>
+  <app-input
+    [control]="signinForm.get('password')"
+    label="Password"
+    id="password"
+    inputType="password"
+  ></app-input>
+
+  <div *ngIf="signinForm.get('password').touched && signinForm.errors" class="ui red basic label">
+    <p *ngIf="signinForm.errors.noConnection">
+      No internet connection was detected, failed to signup.
+    </p>
+    <p *ngIf="signinForm.errors.unknownError">Unknown error.</p>
+  </div>
+
+  <div>
+    <button [disabled]="signinForm.invalid" class="ui submit button primary">Sign In</button>
+  </div>
+</form>

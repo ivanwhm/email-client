@@ -29,4 +29,10 @@ export class AuthService {
       })
     );
   }
+
+  checkAuth() {
+    const uri = `${this.rootUrl}/signedin`;
+
+    return this.http.get(uri).pipe(tap(() => {}));
+  }
 }

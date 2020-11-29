@@ -2,10 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from '../auth.service';
-import { SignupResponse } from '../interfaces/signup-response.interface';
-import { MatchPassword } from '../validators/match-password';
-import { UniqueUsername } from '../validators/unique-username';
+import { AuthService } from '../../auth.service';
+import { SignupResponse } from '../../interfaces/signup-response.interface';
+import { MatchPassword } from '../../validators/match-password';
+import { UniqueUsername } from '../../validators/unique-username';
 
 @Component({
   selector: 'app-signup',

@@ -24,20 +24,16 @@ export class AuthService {
   signup(credentials: SignupCredentials): Observable<SignupResponse> {
     const uri = `${this.rootUrl}/signup`;
 
-    return this.http
-      .post<SignupResponse>(uri, credentials, { withCredentials: true })
-      .pipe(
-        tap(() => {
-          this.signedIn$.next(true);
-        })
-      );
+    return this.http.post<SignupResponse>(uri, credentials).pipe(
+      tap(() => {
+        this.signedIn$.next(true);
+      })
+    );
   }
 
   checkAuth(): Observable<SignedInResponse> {
     const uri = `${this.rootUrl}/signedin`;
 
-    return this.http
-      .get<SignedInResponse>(uri, { withCredentials: true })
-      .pipe(tap(() => {}));
+    return this.http.get<SignedInResponse>(uri).pipe(tap(() => {}));
   }
 }

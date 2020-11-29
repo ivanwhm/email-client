@@ -5,6 +5,8 @@
         "nospace",
         "onespace",
         "paren",
+        "signin",
+        "signout",
         "signup"
     ]
 }

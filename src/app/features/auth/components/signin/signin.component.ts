@@ -30,6 +30,15 @@ export class SigninComponent {
       return;
     }
 
-    this.authService.signin(this.signinForm.value).subscribe(() => {});
+    this.authService.signin(this.signinForm.value).subscribe({
+      next: () => {},
+      error: ({ status }) => {
+        if (!status) {
+          this.signinForm.setErrors({ noConnection: true });
+        } else {
+          this.signinForm.setErrors({ invalidLoggingInformation: true });
+        }
+      },
+    });
   }
 }

@@ -19,6 +19,7 @@
       No internet connection was detected, failed to signup.
     </p>
     <p *ngIf="signinForm.errors.unknownError">Unknown error.</p>
+    <p *ngIf="signinForm.errors.invalidLoggingInformation">Invalid username or password.</p>
   </div>
 
   <div>

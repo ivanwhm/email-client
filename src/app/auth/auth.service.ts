@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { SignedInResponse } from './interfaces/signed-in-response.interface';
 import { SignupCredentials } from './interfaces/signup-credentials.interface';
 import { SignupResponse } from './interfaces/signup-response.interface';
 import { UsernameAvailableResponse } from './interfaces/username-available-response.interface';
@@ -23,16 +24,20 @@ export class AuthService {
   signup(credentials: SignupCredentials): Observable<SignupResponse> {
     const uri = `${this.rootUrl}/signup`;
 
-    return this.http.post<SignupResponse>(uri, credentials).pipe(
-      tap(() => {
-        this.signedIn$.next(true);
-      })
-    );
+    return this.http
+      .post<SignupResponse>(uri, credentials, { withCredentials: true })
+      .pipe(
+        tap(() => {
+          this.signedIn$.next(true);
+        })
+      );
   }
 
-  checkAuth() {
+  checkAuth(): Observable<SignedInResponse> {
     const uri = `${this.rootUrl}/signedin`;
 
-    return this.http.get(uri).pipe(tap(() => {}));
+    return this.http
+      .get<SignedInResponse>(uri, { withCredentials: true })
+      .pipe(tap(() => {}));
   }
 }

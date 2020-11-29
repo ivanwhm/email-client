@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-import { AuthHttpInterceptor } from './auth/interceptors/auth-http-interceptor';
+import { AuthModule } from './features/auth/auth.module';
+import { AuthHttpInterceptor } from './features/auth/interceptors/auth-http-interceptor';
 
 @NgModule({
   declarations: [AppComponent],

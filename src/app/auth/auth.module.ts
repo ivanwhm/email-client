@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -10,6 +9,6 @@ import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [SigninComponent, SignupComponent],
-  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule, HttpClientModule, SharedModule],
+  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule, SharedModule],
 })
 export class AuthModule {}

@@ -12,27 +12,35 @@ import { UsernameAvailableResponse } from './interfaces/username-available-respo
   providedIn: 'root',
 })
 export class AuthService {
-  rootUrl = 'https://api.angular-email.com';
+  rootUrl = 'https://api.angular-email.com/auth';
   signedin$ = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {}
 
   usernameAvailable(username: string): Observable<UsernameAvailableResponse> {
-    return this.http.post<UsernameAvailableResponse>(`${this.rootUrl}/auth/username`, {
+    return this.http.post<UsernameAvailableResponse>(`${this.rootUrl}/username`, {
       username,
     });
   }
 
   signup(credentials: SignupCredentials): Observable<SignupResponse> {
-    return this.http.post<SignupResponse>(`${this.rootUrl}/auth/signup`, credentials).pipe(
+    return this.http.post<SignupResponse>(`${this.rootUrl}/signup`, credentials).pipe(
       tap(() => {
         this.signedin$.next(true);
       })
     );
   }
 
+  signout(): Observable<void> {
+    return this.http.post<void>(`${this.rootUrl}/signout`, {}).pipe(
+      tap(() => {
+        this.signedin$.next(false);
+      })
+    );
+  }
+
   checkAuth(): Observable<SignedInResponse> {
-    return this.http.get<SignedInResponse>(`${this.rootUrl}/auth/signedin`).pipe(
+    return this.http.get<SignedInResponse>(`${this.rootUrl}/signedin`).pipe(
       tap(({ authenticated }) => {
         this.signedin$.next(authenticated);
       })

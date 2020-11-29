@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../auth.service';
 
@@ -7,11 +8,11 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./signout.component.css'],
 })
 export class SignoutComponent implements OnInit {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.authService.signout().subscribe(() => {
-      // Navigate de user back to a signin page
+      this.router.navigateByUrl('/');
     });
   }
 }

@@ -10,13 +10,7 @@ import { AuthHttpInterceptor } from './auth/interceptors/auth-http-interceptor';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, AuthModule, HttpClientModule],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthHttpInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

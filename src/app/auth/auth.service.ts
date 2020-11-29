@@ -1,39 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { SignedInResponse } from './interfaces/signed-in-response.interface';
 import { SignupCredentials } from './interfaces/signup-credentials.interface';
 import { SignupResponse } from './interfaces/signup-response.interface';
 import { UsernameAvailableResponse } from './interfaces/username-available-response.interface';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
-  private rootUrl = 'https://api.angular-email.com/auth';
-  signedIn$ = new BehaviorSubject(false);
+  rootUrl = 'https://api.angular-email.com';
+  signedin$ = new BehaviorSubject(false);
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  usernameAvailable(username: string): Observable<UsernameAvailableResponse> {
-    const uri = `${this.rootUrl}/username`;
-
-    return this.http.post<UsernameAvailableResponse>(uri, { username });
+  usernameAvailable(username: string) {
+    return this.http.post<UsernameAvailableResponse>(`${this.rootUrl}/auth/username`, {
+      username,
+    });
   }
 
-  signup(credentials: SignupCredentials): Observable<SignupResponse> {
-    const uri = `${this.rootUrl}/signup`;
-
-    return this.http.post<SignupResponse>(uri, credentials).pipe(
+  signup(credentials: SignupCredentials) {
+    return this.http.post<SignupResponse>(`${this.rootUrl}/auth/signup`, credentials).pipe(
       tap(() => {
-        this.signedIn$.next(true);
+        this.signedin$.next(true);
       })
     );
   }
 
-  checkAuth(): Observable<SignedInResponse> {
-    const uri = `${this.rootUrl}/signedin`;
-
-    return this.http.get<SignedInResponse>(uri).pipe(tap(() => {}));
+  checkAuth() {
+    return this.http.get(`${this.rootUrl}/auth/signedin`).pipe(
+      tap((response) => {
+        console.log(response);
+      })
+    );
   }
 }

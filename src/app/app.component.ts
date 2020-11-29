@@ -9,10 +9,10 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  signedIn$: BehaviorSubject<boolean>;
+  signedin$: BehaviorSubject<boolean>;
 
-  constructor(private readonly authService: AuthService) {
-    this.signedIn$ = this.authService.signedIn$;
+  constructor(private authService: AuthService) {
+    this.signedin$ = this.authService.signedin$;
   }
 
   ngOnInit(): void {

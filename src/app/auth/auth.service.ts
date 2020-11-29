@@ -2,34 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface UsernameAvailableResponse {
-  available: boolean;
-}
-
-export interface Credentials {
-  username: string;
-  password: string;
-  passwordConfirmation: string;
-}
-
-export interface SignupResponse {
-  username: string;
-}
-
-const BASE_URL = 'https://api.angular-email.com/auth';
+import { SignupCredentials } from './interfaces/signup-credentials.interface';
+import { SignupResponse } from './interfaces/signup-response.interface';
+import { UsernameAvailableResponse } from './interfaces/username-available-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private rootUrl = 'https://api.angular-email.com/auth';
+
   constructor(private readonly http: HttpClient) {}
 
   usernameAvailable(username: string): Observable<UsernameAvailableResponse> {
-    return this.http.post<UsernameAvailableResponse>(`${BASE_URL}/username`, {
+    const uri = `${this.rootUrl}/username`;
+
+    return this.http.post<UsernameAvailableResponse>(uri, {
       username,
     });
   }
 
-  signup(credentials: Credentials): Observable<SignupResponse> {
-    return this.http.post<SignupResponse>(`${BASE_URL}/signup`, {
+  signup(credentials: SignupCredentials): Observable<SignupResponse> {
+    const uri = `${this.rootUrl}/signup`;
+
+    return this.http.post<SignupResponse>(uri, {
       credentials,
     });
   }

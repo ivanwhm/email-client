@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, UrlSegment } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanLoad {
-  canLoad(route: Route, segments: UrlSegment[]): boolean {
-    return true;
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | boolean {
+    return new Observable((subscriber) => {
+      subscriber.next(true);
+      subscriber.complete();
+    });
   }
 }

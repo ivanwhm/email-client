@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { SignedInResponse } from './interfaces/signed-in-response.interface';
-import { SigninCredentials } from './interfaces/signin-credentials.interface';
-import { SignupCredentials } from './interfaces/signup-credentials.interface';
-import { SignupResponse } from './interfaces/signup-response.interface';
-import { UsernameAvailableResponse } from './interfaces/username-available-response.interface';
+import { SignedInResponse } from '../interfaces/signed-in-response.interface';
+import { SigninCredentials } from '../interfaces/signin-credentials.interface';
+import { SignupCredentials } from '../interfaces/signup-credentials.interface';
+import { SignupResponse } from '../interfaces/signup-response.interface';
+import { UsernameAvailableResponse } from '../interfaces/username-available-response.interface';
 
 @Injectable({
   providedIn: 'root',

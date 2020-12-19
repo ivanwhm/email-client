@@ -3,8 +3,8 @@ import { AsyncValidator, FormControl } from '@angular/forms';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { AuthService } from '../auth.service';
 import { UsernameAvailableResponse } from '../interfaces/username-available-response.interface';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class UniqueUsername implements AsyncValidator {

@@ -1,8 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { EmailSummary } from '../interfaces/email-summary.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmailService {
-  constructor() {}
+  rootUrl = 'https://api.angular-email.com/auth';
+
+  constructor(private readonly httpClient: HttpClient) {}
+
+  getEmails(): Observable<EmailSummary[]> {
+    return this.httpClient.get<EmailSummary[]>(`${this.rootUrl}/emails`);
+  }
 }

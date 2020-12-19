@@ -6,11 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './features/auth/auth.module';
 import { AuthHttpInterceptor } from './features/auth/interceptors/auth-http-interceptor';
-import { InboxModule } from './features/inbox/inbox.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, AuthModule, HttpClientModule, InboxModule],
+  imports: [BrowserModule, AppRoutingModule, AuthModule, HttpClientModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })

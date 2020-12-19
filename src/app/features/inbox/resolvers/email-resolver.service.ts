@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 import { Email } from '../interfaces/email.interface';
 import { EmailService } from '../services/email.service';
@@ -12,7 +11,9 @@ import { EmailService } from '../services/email.service';
 export class EmailResolverService implements Resolve<Email> {
   constructor(private readonly emailService: EmailService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Email> {
-    return route.params.pipe(switchMap(({ id }) => this.emailService.getEmail(id)));
+  resolve(route: ActivatedRouteSnapshot): Observable<Email> {
+    const { id } = route.params;
+
+    return this.emailService.getEmail(id);
   }
 }

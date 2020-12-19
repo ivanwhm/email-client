@@ -9,7 +9,7 @@ import { EmailService } from '../../services/email.service';
   styleUrls: ['./email-index.component.css'],
 })
 export class EmailIndexComponent implements OnInit {
-  emails: EmailSummary[];
+  emails: EmailSummary[] = [];
 
   constructor(private readonly emailService: EmailService) {}
 

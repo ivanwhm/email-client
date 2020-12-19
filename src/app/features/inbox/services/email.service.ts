@@ -15,4 +15,8 @@ export class EmailService {
   getEmails(): Observable<EmailSummary[]> {
     return this.httpClient.get<EmailSummary[]>(`${this.rootUrl}`);
   }
+
+  getEmail(id: string) {
+    return this.httpClient.get(`${this.rootUrl}/${id}`);
+  }
 }

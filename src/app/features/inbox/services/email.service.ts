@@ -8,11 +8,11 @@ import { EmailSummary } from '../interfaces/email-summary.interface';
   providedIn: 'root',
 })
 export class EmailService {
-  rootUrl = 'https://api.angular-email.com/auth';
+  rootUrl = 'https://api.angular-email.com/emails';
 
   constructor(private readonly httpClient: HttpClient) {}
 
   getEmails(): Observable<EmailSummary[]> {
-    return this.httpClient.get<EmailSummary[]>(`${this.rootUrl}/emails`);
+    return this.httpClient.get<EmailSummary[]>(`${this.rootUrl}`);
   }
 }

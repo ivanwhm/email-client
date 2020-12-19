@@ -20,7 +20,7 @@ export class EmailShowComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-      .pipe(switchMap((params) => this.emailService.getEmail(params.id)))
+      .pipe(switchMap(({ id }) => this.emailService.getEmail(id)))
       .subscribe((email: Email) => console.log(email));
   }
 }

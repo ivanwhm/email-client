@@ -7,6 +7,7 @@ import { EmailReplyComponent } from './components/email-reply/email-reply.compon
 import { EmailShowComponent } from './components/email-show/email-show.component';
 import { HomeComponent } from './components/home/home.component';
 import { InboxRoutingModule } from './inbox-routing.module';
+import { PlaceholderComponent } from './components/placeholder/placeholder.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { InboxRoutingModule } from './inbox-routing.module';
     EmailReplyComponent,
     EmailIndexComponent,
     EmailShowComponent,
+    PlaceholderComponent,
   ],
   imports: [CommonModule, InboxRoutingModule],
 })

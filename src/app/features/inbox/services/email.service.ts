@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { EmailSummary } from '../interfaces/email-summary.interface';
+import { Email } from '../interfaces/email.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class EmailService {
     return this.httpClient.get<EmailSummary[]>(`${this.rootUrl}`);
   }
 
-  getEmail(id: string) {
-    return this.httpClient.get(`${this.rootUrl}/${id}`);
+  getEmail(id: string): Observable<Email> {
+    return this.httpClient.get<Email>(`${this.rootUrl}/${id}`);
   }
 }

@@ -10,6 +10,7 @@ import { EmailShowComponent } from './components/email-show/email-show.component
 import { HomeComponent } from './components/home/home.component';
 import { PlaceholderComponent } from './components/placeholder/placeholder.component';
 import { InboxRoutingModule } from './inbox-routing.module';
+import { EmailFormComponent } from './components/email-form/email-form.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { InboxRoutingModule } from './inbox-routing.module';
     EmailShowComponent,
     PlaceholderComponent,
     EmailNotFoundComponent,
+    EmailFormComponent,
   ],
   imports: [CommonModule, InboxRoutingModule, SharedModule],
 })

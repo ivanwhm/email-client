@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -19,7 +18,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.el.nativeElement.remove();
   }
 
-  onDismissClick(event: any): void {
-    this.dismiss.emit(event);
+  onDismissClick(): void {
+    this.dismiss.emit();
   }
 }

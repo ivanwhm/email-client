@@ -1,5 +1,5 @@
 <div (click)="onDismissClick($event)" class="ui dimmer visible active">
-  <div (click)="($event.stopPropagation)" class="ui modal visible active">
+  <div (click)="$event.stopPropagation()" class="ui modal visible active">
     <i (click)="onDismissClick($event)" class="close icon"></i>
     <div class="header">
       <ng-content select="[modalTitle]"></ng-content>

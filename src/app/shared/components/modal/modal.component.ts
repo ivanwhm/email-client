@@ -19,7 +19,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.el.nativeElement.remove();
   }
 
-  onDismissClick(): void {
-    this.dismiss.emit();
+  onDismissClick(event: any): void {
+    this.dismiss.emit(event);
   }
 }

@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailCreateComponent implements OnInit {
   showModal = false;
+  email = {
+    id: '',
+    to: '',
+    subject: '',
+    html: '',
+    text: '',
+    from: 'ivanwhm4@angular-email.com',
+  };
 
   constructor() {}
 

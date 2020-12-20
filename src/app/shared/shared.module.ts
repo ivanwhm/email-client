@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { InputComponent } from './input/input.component';
+import { InputComponent } from './components/input/input.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
-  declarations: [InputComponent],
+  declarations: [InputComponent, ModalComponent],
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [InputComponent],
+  exports: [InputComponent, ModalComponent],
 })
 export class SharedModule {}

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { EmailSent } from '../interfaces/email-sent.interface';
 import { EmailSummary } from '../interfaces/email-summary.interface';
 import { Email } from '../interfaces/email.interface';
 
@@ -19,5 +20,9 @@ export class EmailService {
 
   getEmail(id: string): Observable<Email> {
     return this.httpClient.get<Email>(`${this.rootUrl}/${id}`);
+  }
+
+  sendEmail(email: Email): Observable<EmailSent> {
+    return this.httpClient.post<EmailSent>(`${this.rootUrl}`, email);
   }
 }
